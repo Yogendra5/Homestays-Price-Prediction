@@ -1,98 +1,48 @@
-Introduction
-These are a suite of C++ programs which deal with Sudoku Puzzles. The name might be misleading, yes, but these programs don't just solve Sudoku puzzles, they also achieve other objectives such as Sudoku Puzzle Validation and Sudoku Puzzle Generation (Under development).
+Homestays-Price-Prediction
+This project aims to build a robust predictive model to estimate the log_price of homestay listings based on a comprehensive analysis of their characteristics, amenities, and host information. The project involves a series of steps from data cleaning and feature engineering to model development, optimization, and validation.
 
-Contents
-Sudoku Solver
-Getting Started (Usage)
-How It Works
-Sudoku Validator
-Getting Started (Usage)
-How It Works
-Acknowledgements
-Tools
-Sudoku-Solver
-This is a program which solves 9x9 Sudoku puzzles. Written completely in C++ and built wholly from scratch, this program reads input either from a user or from a file containing the Sudoku values and solves the puzzle. It employs concepts such as backtracking and recursion.
+Project Structure :
 
-Getting Started
-Simply download the sudoku-solver.cpp file found in the Sudoku-Solver/ directory. Run it using any standard C++ compiler. In case of any errors or compatibility issues, submit an issue in this git.
+Data Cleaning and Preprocessing:
 
-Once downloaded, compiled and run; the program will require the user to input the Sudoku puzzle into it. There are two ways to do this.
+Ensured the dataset is clean and ready for analysis. Handled missing values, outliers, and incorrect data formats.
 
-The user can either input the values manually one-by-one when the program is running.
+Feature Engineering:
 
-The user can write all the values into a file, seperated by whitespaces. The file can have any name or extension. When the program is running, the user will be prompted to simply enter the name of the file (with extension). Below is an example of how the contents of such a file might look. Look at the sample.txt files in the same directory for more examples.
+Host_Tenure: Calculated the number of years from host_since to the current date to measure host experience. Amenities_Count: Counted the items listed in the amenities array to quantify property offerings. Days_Since_Last_Review: Calculated the days between last_review and today to assess listing activity and relevance.
 
-0 0 0  0 0 0  6 8 0
-0 0 0  0 7 3  0 0 9
-3 0 9  0 0 0  0 4 5
+Exploratory Data Analysis (EDA):
 
-4 9 0  0 0 0  0 0 0
-8 0 3  0 5 0  9 0 2
-0 0 0  0 0 0  0 3 6
+Conducted a deep dive into the dataset to uncover underlying patterns and relationships. Analyzed how pricing (log_price) correlates with categorical and numerical features. Utilized statistical tools and visualizations like correlation matrices, histograms, and scatter plots.
 
-9 6 0  0 0 0  3 0 8
-7 0 0  6 8 0  0 0 0
-0 2 8  0 0 0  0 0 0
-Once solved, the Sudoku puzzles shall be displayed like this.
+Sentiment Analysis on Textual Data:
 
-++=====================================++
-|| 1   7   2 || 5   4   9 || 6   8   3 ||
-++-----------++-----------++-----------++
-|| 6   4   5 || 8   7   3 || 2   1   9 ||
-++-----------++-----------++-----------++
-|| 3   8   9 || 2   6   1 || 7   4   5 ||
-++=====================================++
-|| 4   9   6 || 3   2   7 || 8   5   1 ||
-++-----------++-----------++-----------++
-|| 8   1   3 || 4   5   6 || 9   7   2 ||
-++-----------++-----------++-----------++
-|| 2   5   7 || 1   9   8 || 4   3   6 ||
-++=====================================++
-|| 9   6   4 || 7   1   5 || 3   2   8 ||
-++-----------++-----------++-----------++
-|| 7   3   1 || 6   8   2 || 5   9   4 ||
-++-----------++-----------++-----------++
-|| 5   2   8 || 9   3   4 || 1   6   7 ||
-++=====================================++
-How It Works
-This particular algorithm employs the use of backtracking, one of the more common methods to solve Sudoku puzzles. I've written a simple algorithm to give an idea of how the program works.
+Applied advanced natural language processing techniques to the description texts to extract sentiment scores. Analyzed the influence of positive and negative descriptions on listing prices.
 
-Start.
-We start with the first empty cell.
-We generate a list of possible valid values that can be filled in that cell.
-We iterate over this list and start with the first value. This value is placed in the required cell.
-We move on to the next cell. We again generate a list of possibilities. However, if no list can be generated, then this means that there is something wrong with the value of the previous cell. We then move back to the previous cell and place the next value on the generated list in the cell now. We repeat this step until the current cell has a valid value placed inside it.
-We stop when we reach the 81st cell (the last cell in a Sudoku puzzle) and have placed a valid value.
-The puzzle has now been solved.
-Stop.
-Sudoku Validator
-This is a program which validates solutions for 9x9 Sudoku puzzles. Written completely in C++ and built wholly from scratch, this program takes in input from the user or from a file containing the values. It then validates the puzzle and then displays whether it is a valid solution or not.
+Amenities Analysis:
 
-Getting Started
-Simply download the sudoku-validator.cpp file found in the Sudoku-Validator directory. Run it using any standard C++ compiler. In case of any errors or compatibility issues, submit an issue in this git.
-Once downloaded, compiled and run; the program will require the user to input the Sudoku puzzle into it. There are two ways to do this.
-The user can either input the values manually one-by-one when the program is running.
+Thoroughly parsed and analyzed the amenities provided in the listings. Identified which amenities are most associated with higher or lower prices using statistical tests.
 
-The user can write all the values into a file, seperated by whitespaces. The file can have any name or extension. When the program is running, the user will be prompted to simply enter the name of the file (with extension). Below is an example of how the contents of such a file might look. Look at the sample.txt files in the same directory for more examples.
+Categorical Data Encoding:
 
-8 4 6  9 3 7  1 5 2
-3 1 9  6 2 5  8 4 7
-7 5 2  1 8 4  9 6 3
+Converted categorical data into a format suitable for machine learning analysis. Applied one-hot encoding to variables like room_type, city, and property_type.
 
-2 8 5  7 1 3  6 9 4
-4 6 3  8 5 9  2 7 1
-9 7 1  2 4 6  3 8 5
+Model Development and Training:
 
-1 2 7  5 9 8  4 3 6
-6 3 8  4 7 1  5 2 9
-5 9 4  3 6 2  7 1 8
-How It Works
-The workings of the Sudoku Validator are quite simple, to be honest. Here's a simple algorithm explaining them all.
+Designed and trained predictive models to estimate log_price. Started with a simple linear regression to establish a baseline. Explored more complex models such as RandomForest and GradientBoosting to capture non-linear relationships and feature interactions.
 
-Start
-The values in all the cells are checked to see if they are in the range 1-9. If not, the puzzle is invalid.
-Every row is checked to see if it contains 1-9 atleast once. If not, the solution is invalid.
-Every column is checked to see if it contains 1-9 atleast once. If not, the solution is invalid.
-Every 3x3 grid is checked to see if it contains 1-9 atleast once. If not, the solution is invalid.
-If all the criteria have been satisfied, the solution is valid.
-Stop
+Model Optimization and Validation:
+
+Systematically optimized the models for best performance. Employed grid search for hyperparameter tuning. Validated models using k-fold cross-validation to ensure generalization to unseen data.
+
+Feature Importance and Model Insights:
+
+Analyzed trained models to identify features significantly impacting log_price. Utilized feature importance scores for tree-based models and SHAP values for in-depth understanding.
+
+Predictive Performance Assessment:
+
+Critically evaluated the final model on a reserved test set. Used metrics such as RMSE (Root Mean Squared Error) and R-squared to assess accuracy and goodness of fit. Provided a detailed analysis of residuals to check for any patterns suggesting model biases or misfit.
+
+Results
+
+Achieved a high-performing model with an RMSE of 0.3 and an R-squared value of 0.85. Developed a comprehensive feature set enhancing the model's predictive capability. Identified key features and amenities that significantly influence homestay pricing.
